@@ -3,20 +3,25 @@ right = gamepad_axis_value(0, gp_axislh) > 0 or keyboard_check(vk_right);
 left = gamepad_axis_value(0, gp_axislh) < 0 or keyboard_check(vk_left);
 jump_held = gamepad_button_check(0, gp_face1) or keyboard_check(vk_space);
 jump_pressed = gamepad_button_check_pressed(0, gp_face1) or keyboard_check_pressed(vk_space);
+slowmo = keyboard_check(ord("C"));
 
 hdir = right-left;
 
+if slowmo
+game_speed = 0.25;
+else
+game_speed = 1;
 
 //move
 hsp = approach(hsp, hdir*walk_spd, acc);
 
 //gravity
 if vsp < max_vsp
-vsp += grv;
+vsp += grv*game_speed;
 
 //spin and shiiii
 if !place_meeting(x, y+1, oWall) {
-	draw_angle += spin_spd*-image_xscale;
+	draw_angle += (spin_spd*-image_xscale)*game_speed;
 	
 	if draw_angle < 0
 	draw_angle = 360;
@@ -25,11 +30,11 @@ if !place_meeting(x, y+1, oWall) {
 	
 }
 else
-draw_angle = approach(draw_angle, 0, spin_spd);
+draw_angle = approach(draw_angle, 0, spin_spd*game_speed);
 
 //jump
-grounded -= 1;
-jump -= 1;
+grounded -= 1*game_speed;
+jump -= 1*game_speed;
 
 if place_meeting(x, y+1, oWall) 
 grounded = coyote_buffer;
@@ -56,7 +61,7 @@ if place_meeting(x+hsp, y, oWall) {
 	}
 	hsp = 0;
 }
-x += hsp;
+x += hsp*game_speed;
 x = round(x);
 
 if place_meeting(x, y+vsp, oWall) {
@@ -65,7 +70,7 @@ if place_meeting(x, y+vsp, oWall) {
 	}
 	vsp = 0;
 }
-y += vsp;
+y += vsp*game_speed;
 y = round(y);
 
 //perish
@@ -75,7 +80,7 @@ instance_destroy(id);
 //animations
 if hsp != 0 {
 	image_xscale = sign(hsp);
-	image_speed = 1;
+	image_speed = 1*game_speed;
 }
 else {
 	image_speed = 0;
