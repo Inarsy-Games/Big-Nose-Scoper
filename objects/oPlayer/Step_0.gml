@@ -78,7 +78,7 @@ if hp <= 0
 instance_destroy(id);
 
 //animations
-if hsp != 0 {
+if hsp != 0 and place_meeting(x, y+1, oWall) {
 	image_xscale = sign(hsp);
 	image_speed = 1*game_speed;
 }
