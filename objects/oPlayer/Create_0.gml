@@ -17,6 +17,7 @@ max_vsp = 6;
 varjumpmod = 0.7;
 jump = 0;
 grounded = 0;
+walled = 0;
 coyote_buffer = 7;
 jump_buffer = 8;
 jumped = false;

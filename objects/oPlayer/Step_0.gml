@@ -15,7 +15,7 @@ else
 game_speed = 1;
 
 //move
-hsp = approach(hsp, hdir*walk_spd, acc);
+hsp = approach(hsp, hdir*walk_spd, acc*game_speed);
 
 //gravity
 if vsp < max_vsp
@@ -36,6 +36,7 @@ draw_angle = approach(draw_angle, 0, spin_spd*game_speed);
 
 //jump
 grounded -= 1*game_speed;
+walled -= 1*game_speed;
 jump -= 1*game_speed;
 
 if place_meeting(x, y+1, oWall) 
@@ -48,6 +49,17 @@ if grounded > 0 and jump > 0 {
 	grounded = 0;
 	jump = 0;
 	jumped = true;
+} 
+else if walled > 0 and jump > 0 {
+	vsp = jump_force;
+	
+	var _jumpdir = place_meeting(x+1, y, oWall)-place_meeting(x-1, y, oWall);
+	
+	
+	hsp = jump_force*_jumpdir;
+	walled = 0;
+	jump = 0;
+	image_xscale *= -1;
 }
 
 if !jump_held and jumped and vsp < 0 
@@ -63,7 +75,7 @@ if shoot and can_shoot <= 0 {
 	var _offset = 0;
 	if image_xscale == -1
 	_offset = 180;
-	with instance_create_depth(x, y, depth+1, oBullet) {
+	with instance_create_depth(x, y, depth+1, oBullet) { 
 		direction = other.draw_angle+_offset;
 		image_angle = other.draw_angle+_offset;
 	}
@@ -76,6 +88,9 @@ if place_meeting(x+hsp, y, oWall) {
 		x += sign(hsp);	
 	}
 	hsp = 0;
+	
+	//wall jump junk
+	walled = coyote_buffer;
 }
 x += hsp*game_speed;
 
