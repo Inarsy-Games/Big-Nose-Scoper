@@ -1,0 +1,1 @@
+globalvar game_speed; game_speed = 1;
