@@ -8,7 +8,7 @@ slowmo = keyboard_check(ord("C"));
 hdir = right-left;
 
 if slowmo
-game_speed = 0.25;
+game_speed = 0.1;
 else
 game_speed = 1;
 
@@ -62,6 +62,8 @@ if place_meeting(x+hsp, y, oWall) {
 	hsp = 0;
 }
 x += hsp*game_speed;
+
+if game_speed == 1
 x = round(x);
 
 if place_meeting(x, y+vsp, oWall) {
@@ -71,6 +73,8 @@ if place_meeting(x, y+vsp, oWall) {
 	vsp = 0;
 }
 y += vsp*game_speed;
+
+if game_speed == 1
 y = round(y);
 
 //perish
