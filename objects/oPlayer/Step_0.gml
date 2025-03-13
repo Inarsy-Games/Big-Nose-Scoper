@@ -3,11 +3,14 @@ right = gamepad_axis_value(0, gp_axislh) > 0 or keyboard_check(vk_right);
 left = gamepad_axis_value(0, gp_axislh) < 0 or keyboard_check(vk_left);
 jump_held = gamepad_button_check(0, gp_face1) or keyboard_check(ord("Z"));
 jump_pressed = gamepad_button_check_pressed(0, gp_face1) or keyboard_check_pressed(ord("Z"));
-slowmo = keyboard_check(ord("X"));
-shoot = keyboard_check_pressed(ord("C"));
+slowmo = keyboard_check(ord("X")) or gamepad_button_check(0, gp_shoulderlb);
+shoot = keyboard_check_pressed(ord("C")) or gamepad_button_check(0, gp_shoulderrb);
 
 
 hdir = right-left;
+
+if hdir != 0
+spin_dir = hdir;
 
 if slowmo
 game_speed = 0.1;
@@ -23,7 +26,7 @@ vsp += grv*game_speed;
 
 //spin and shiiii
 if !place_meeting(x, y+1, oWall) {
-	draw_angle += (spin_spd*-image_xscale)*game_speed;
+	draw_angle += spin_spd*-spin_dir*game_speed;
 	
 	if draw_angle < 0
 	draw_angle = 360;
@@ -49,17 +52,16 @@ if grounded > 0 and jump > 0 {
 	grounded = 0;
 	jump = 0;
 	jumped = true;
+	
 } 
 else if walled > 0 and jump > 0 {
 	vsp = jump_force;
 	
 	var _jumpdir = place_meeting(x+1, y, oWall)-place_meeting(x-1, y, oWall);
 	
-	
 	hsp = jump_force*_jumpdir;
 	walled = 0;
 	jump = 0;
-	image_xscale *= -1;
 }
 
 if !jump_held and jumped and vsp < 0 
