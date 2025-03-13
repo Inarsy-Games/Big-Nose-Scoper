@@ -1,9 +1,11 @@
 //inputs
 right = gamepad_axis_value(0, gp_axislh) > 0 or keyboard_check(vk_right);
 left = gamepad_axis_value(0, gp_axislh) < 0 or keyboard_check(vk_left);
-jump_held = gamepad_button_check(0, gp_face1) or keyboard_check(vk_space);
-jump_pressed = gamepad_button_check_pressed(0, gp_face1) or keyboard_check_pressed(vk_space);
-slowmo = keyboard_check(ord("C"));
+jump_held = gamepad_button_check(0, gp_face1) or keyboard_check(ord("Z"));
+jump_pressed = gamepad_button_check_pressed(0, gp_face1) or keyboard_check_pressed(ord("Z"));
+slowmo = keyboard_check(ord("X"));
+shoot = keyboard_check_pressed(ord("C"));
+
 
 hdir = right-left;
 
@@ -53,6 +55,20 @@ vsp *= varjumpmod;
 
 if vsp > 0
 jumped = false;
+
+//shooting
+can_shoot -= 1;
+if shoot and can_shoot <= 0 {
+	
+	var _offset = 0;
+	if image_xscale == -1
+	_offset = 180;
+	with instance_create_depth(x, y, depth+1, oBullet) {
+		direction = other.draw_angle+_offset;
+		image_angle = other.draw_angle+_offset;
+	}
+	can_shoot = fire_rate;
+}
 
 //collision
 if place_meeting(x+hsp, y, oWall) {

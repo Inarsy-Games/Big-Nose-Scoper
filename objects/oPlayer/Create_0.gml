@@ -21,6 +21,9 @@ coyote_buffer = 7;
 jump_buffer = 8;
 jumped = false;
 
+//shooting
+can_shoot = 0;
+fire_rate = 15;
 spin_spd = 15;
 draw_angle = 0;
 
