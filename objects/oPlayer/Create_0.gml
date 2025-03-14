@@ -23,10 +23,12 @@ jump_buffer = 8;
 jumped = false;
 
 //shooting
-can_shoot = 0;
-fire_rate = 15;
 spin_spd = 15;
+spin_dir = 1;
 draw_angle = 0;
+charge = 0;
+charge_rate = 1/100;
+charge_spin = 0;
 
 //health-
 hp = 10;

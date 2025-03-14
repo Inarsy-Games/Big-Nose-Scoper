@@ -33,6 +33,7 @@
     {"id":{"name":"Room1","path":"rooms/Room1/Room1.yy",},},
     {"id":{"name":"approach","path":"scripts/approach/approach.yy",},},
     {"id":{"name":"sBullet","path":"sprites/sBullet/sBullet.yy",},},
+    {"id":{"name":"sCharge","path":"sprites/sCharge/sCharge.yy",},},
     {"id":{"name":"sEvilGuy","path":"sprites/sEvilGuy/sEvilGuy.yy",},},
     {"id":{"name":"sMenu","path":"sprites/sMenu/sMenu.yy",},},
     {"id":{"name":"sPlayer","path":"sprites/sPlayer/sPlayer.yy",},},

@@ -4,7 +4,8 @@ left = gamepad_axis_value(0, gp_axislh) < 0 or keyboard_check(vk_left);
 jump_held = gamepad_button_check(0, gp_face1) or keyboard_check(ord("Z"));
 jump_pressed = gamepad_button_check_pressed(0, gp_face1) or keyboard_check_pressed(ord("Z"));
 slowmo = keyboard_check(ord("X")) or gamepad_button_check(0, gp_shoulderlb);
-shoot = keyboard_check_pressed(ord("C")) or gamepad_button_check(0, gp_shoulderrb);
+charge_shot = keyboard_check(ord("C")) or gamepad_button_check(0, gp_shoulderrb);
+shoot = keyboard_check_released(ord("C")) or gamepad_button_check_released(0, gp_shoulderrb);
 
 
 hdir = right-left;
@@ -71,8 +72,13 @@ if vsp > 0
 jumped = false;
 
 //shooting
-can_shoot -= 1;
-if shoot and can_shoot <= 0 {
+
+if charge_shot and charge < 100
+charge += charge_rate*game_speed;
+else if charge > 0
+charge -= charge_rate*game_speed;
+
+if shoot and charge > 0 {
 	
 	var _offset = 0;
 	if image_xscale == -1
@@ -81,7 +87,8 @@ if shoot and can_shoot <= 0 {
 		direction = other.draw_angle+_offset;
 		image_angle = other.draw_angle+_offset;
 	}
-	can_shoot = fire_rate;
+	
+	charge = 0;
 }
 
 //collision
