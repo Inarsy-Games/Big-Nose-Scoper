@@ -92,6 +92,7 @@ if shoot and charge > 0 {
 	if charge >= 1 {
 		hsp = lengthdir_x(blast_force, draw_angle+180+_offset);
 		vsp = lengthdir_y(blast_force, draw_angle+180+_offset);
+		jumped = false;
 	}
 	
 	
