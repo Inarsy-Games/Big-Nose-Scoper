@@ -23,11 +23,10 @@ jump_buffer = 8;
 jumped = false;
 
 //shooting
-spin_spd = 15;
-spin_dir = 1;
+spin_spd = 10;
 draw_angle = 0;
 charge = 0;
-charge_rate = 1/100;
+charge_rate = 1/75;
 charge_spin = 0;
 
 //health-

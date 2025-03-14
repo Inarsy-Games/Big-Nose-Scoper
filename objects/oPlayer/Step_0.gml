@@ -13,6 +13,7 @@ hdir = right-left;
 if hdir != 0
 spin_dir = hdir;
 
+//slowmo stuff
 if slowmo
 game_speed = 0.1;
 else
@@ -27,7 +28,7 @@ vsp += grv*game_speed;
 
 //spin and shiiii
 if !place_meeting(x, y+1, oWall) {
-	draw_angle += spin_spd*-spin_dir*game_speed;
+	draw_angle += spin_spd*-hdir*game_speed;
 	
 	if draw_angle < 0
 	draw_angle = 360;
@@ -74,7 +75,7 @@ jumped = false;
 //shooting
 
 if charge_shot and charge < 100
-charge += charge_rate*game_speed;
+charge += charge_rate;
 else if charge > 0
 charge -= charge_rate*game_speed;
 
@@ -122,7 +123,7 @@ if hp <= 0
 instance_destroy(id);
 
 //animations
-if hsp != 0 and place_meeting(x, y+1, oWall) {
+if hsp != 0 and place_meeting(x, y+1, oWall) and draw_angle == 0 {
 	image_xscale = sign(hsp);
 	image_speed = 1*game_speed;
 }
