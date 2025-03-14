@@ -28,6 +28,7 @@ draw_angle = 0;
 charge = 0;
 charge_rate = 1/75;
 charge_spin = 0;
+blast_force = 5;
 
 //health-
 hp = 10;

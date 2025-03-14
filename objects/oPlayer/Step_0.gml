@@ -75,7 +75,7 @@ jumped = false;
 //shooting
 
 if charge_shot and charge < 100
-charge += charge_rate;
+charge += charge_rate*game_speed;
 else if charge > 0
 charge -= charge_rate*game_speed;
 
@@ -88,6 +88,12 @@ if shoot and charge > 0 {
 		direction = other.draw_angle+_offset;
 		image_angle = other.draw_angle+_offset;
 	}
+	
+	if charge >= 1 {
+		hsp = lengthdir_x(blast_force, draw_angle+180+_offset);
+		vsp = lengthdir_y(blast_force, draw_angle+180+_offset);
+	}
+	
 	
 	charge = 0;
 }
