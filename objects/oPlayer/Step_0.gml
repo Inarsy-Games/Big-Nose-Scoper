@@ -1,11 +1,11 @@
 //inputs
-right = gamepad_axis_value(0, gp_axislh) > 0 or keyboard_check(vk_right);
-left = gamepad_axis_value(0, gp_axislh) < 0 or keyboard_check(vk_left);
-jump_held = gamepad_button_check(0, gp_face1) or keyboard_check(ord("Z"));
-jump_pressed = gamepad_button_check_pressed(0, gp_face1) or keyboard_check_pressed(ord("Z"));
-slowmo = keyboard_check(ord("X")) or gamepad_button_check(0, gp_shoulderlb);
-charge_shot = keyboard_check(ord("C")) or gamepad_button_check(0, gp_shoulderrb);
-shoot = keyboard_check_released(ord("C")) or gamepad_button_check_released(0, gp_shoulderrb);
+right = gamepad_axis_value(0, gp_axislh) > 0 or keyboard_check(vk_right) or keyboard_check(ord("D"));
+left = gamepad_axis_value(0, gp_axislh) < 0 or keyboard_check(vk_left) or keyboard_check(ord("A"));
+jump_held = gamepad_button_check(0, gp_face1) or keyboard_check(vk_up) or keyboard_check(ord("W"));
+jump_pressed = gamepad_button_check_pressed(0, gp_face1) or keyboard_check_pressed(vk_up) or keyboard_check_pressed(ord("W"));
+slowmo = keyboard_check(ord("X")) or keyboard_check(vk_shift) or gamepad_button_check(0, gp_shoulderlb);
+charge_shot = keyboard_check(ord("C")) or keyboard_check(vk_space) or gamepad_button_check(0, gp_shoulderrb);
+shoot = keyboard_check_released(ord("C")) or keyboard_check_released(vk_space) or gamepad_button_check_released(0, gp_shoulderrb);
 
 
 hdir = right-left;
@@ -66,7 +66,7 @@ if grounded > 0 and jump > 0 {
 	jumped = true;
 	
 } 
-else if walled > 0 and jump > 0 {
+else if walled > 0 and jump > 0 and grounded <= 0 {
 	vsp = jump_force;
 	
 	var _jumpdir = place_meeting(x+1, y, oWall)-place_meeting(x-1, y, oWall);
@@ -115,14 +115,15 @@ if place_meeting(x+hsp, y, oWall) {
 		x += sign(hsp);	
 	}
 	hsp = 0;
-	
-	//wall jump junk
-	walled = coyote_buffer;
 }
 x += hsp*game_speed;
 
 if game_speed == 1
 x = round(x);
+
+//wall jump junk
+if place_meeting(x+1, y, oWall) or place_meeting(x-1, y, oWall)
+walled = coyote_buffer;
 
 if place_meeting(x, y+vsp, oWall) {
 	while !place_meeting(x, y+sign(vsp), oWall) {
