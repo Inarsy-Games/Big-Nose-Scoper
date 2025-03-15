@@ -30,3 +30,5 @@ if charge > 0 {
 	
 	draw_sprite_ext(sCharge, _index, x+lengthdir_x(sprite_get_width(sSniper)/2, draw_angle+_offset), y+lengthdir_y(sprite_get_width(sSniper)/2, draw_angle+_offset), image_xscale, image_yscale, charge_spin, image_blend, image_alpha); 
 }
+
+draw_text(x, y, draw_angle)

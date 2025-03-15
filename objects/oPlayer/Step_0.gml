@@ -29,15 +29,25 @@ vsp += grv*game_speed;
 //spin and shiiii
 if !place_meeting(x, y+1, oWall) {
 	draw_angle += spin_spd*-hdir*game_speed;
+}
+else if draw_angle != 0 {
 	
-	if draw_angle < 0
-	draw_angle = 360;
-	if draw_angle > 360
-	draw_angle = 0;
+	if draw_angle > 180 {
+		draw_angle = approach(draw_angle, 360, spin_spd*game_speed);
+		
+		if draw_angle == 360
+		draw_angle = 0;
+	}
+	else
+	draw_angle = approach(draw_angle, 0, spin_spd*game_speed);
 	
 }
-else
-draw_angle = approach(draw_angle, 0, spin_spd*game_speed);
+
+//keep angle between 0 and 360
+if draw_angle < 0
+draw_angle = 360;
+if draw_angle > 360
+draw_angle = 0;
 
 //jump
 grounded -= 1*game_speed;
