@@ -4,7 +4,7 @@ if image_xscale == -1
 _offset = 180;
 
 var _index = 0;
-while !position_meeting(x+lengthdir_x(_index, draw_angle+_offset), y+lengthdir_y(_index, draw_angle+_offset), oWall) {
+while !position_meeting(x+lengthdir_x(_index, draw_angle+_offset), y+lengthdir_y(_index, draw_angle+_offset), oWall) and _index < oCamera.view_width {
 	_index += 1;		
 }
 
