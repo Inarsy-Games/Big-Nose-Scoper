@@ -3,7 +3,7 @@
   "%Name":"sMenu",
   "bboxMode":0,
   "bbox_bottom":143,
-  "bbox_left":81,
+  "bbox_left":0,
   "bbox_right":255,
   "bbox_top":0,
   "collisionKind":1,
@@ -20,6 +20,7 @@
   "HTile":false,
   "layers":[
     {"$GMImageLayer":"","%Name":"11e350a8-11a5-46d3-846a-ea67954ff4f1","blendMode":0,"displayName":"default","isLocked":false,"name":"11e350a8-11a5-46d3-846a-ea67954ff4f1","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
+    {"$GMImageLayer":"","%Name":"dc16d78c-62ba-4ae4-92a9-bab5ad9eb271","blendMode":0,"displayName":"Layer 1","isLocked":false,"name":"dc16d78c-62ba-4ae4-92a9-bab5ad9eb271","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
   ],
   "name":"sMenu",
   "nineSlice":null,
