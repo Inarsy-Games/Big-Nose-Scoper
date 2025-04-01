@@ -1,0 +1,1 @@
+speed = 5*game_speed;

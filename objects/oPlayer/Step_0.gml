@@ -3,9 +3,8 @@ right = gamepad_axis_value(0, gp_axislh) > 0 or keyboard_check(vk_right) or keyb
 left = gamepad_axis_value(0, gp_axislh) < 0 or keyboard_check(vk_left) or keyboard_check(ord("A"));
 jump_held = gamepad_button_check(0, gp_face1) or keyboard_check(vk_up) or keyboard_check(ord("W"));
 jump_pressed = gamepad_button_check_pressed(0, gp_face1) or keyboard_check_pressed(vk_up) or keyboard_check_pressed(ord("W"));
-slowmo = keyboard_check(ord("X")) or keyboard_check(vk_shift) or gamepad_button_check(0, gp_shoulderlb);
-charge_shot = keyboard_check(ord("C")) or keyboard_check(vk_space) or gamepad_button_check(0, gp_shoulderrb);
-shoot = keyboard_check_released(ord("C")) or keyboard_check_released(vk_space) or gamepad_button_check_released(0, gp_shoulderrb);
+slowmo = keyboard_check(ord("X")) or gamepad_button_check(0, gp_shoulderrb);
+shoot = keyboard_check_pressed(ord("C")) or keyboard_check_pressed(vk_space) or gamepad_button_check_pressed(0, gp_shoulderrb);
 
 
 hdir = right-left;
@@ -83,13 +82,7 @@ if vsp > 0
 jumped = false;
 
 //shooting
-
-if charge_shot and charge < 100
-charge += charge_rate*game_speed;
-else if charge > 0
-charge -= charge_rate*game_speed;
-
-if shoot and charge > 0 {
+if shoot {
 	
 	var _offset = 0;
 	if image_xscale == -1
@@ -98,15 +91,7 @@ if shoot and charge > 0 {
 		direction = other.draw_angle+_offset;
 		image_angle = other.draw_angle+_offset;
 	}
-	
-	if charge >= 1 {
-		hsp = lengthdir_x(blast_force, draw_angle+180+_offset);
-		vsp = lengthdir_y(blast_force, draw_angle+180+_offset);
-		jumped = false;
-	}
-	
-	
-	charge = 0;
+
 }
 
 //collision

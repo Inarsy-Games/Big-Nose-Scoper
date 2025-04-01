@@ -1,0 +1,11 @@
+{
+  "$GMNotes":"",
+  "%Name":"todoig",
+  "name":"todoig",
+  "parent":{
+    "name":"Scoper",
+    "path":"Scoper.yyp",
+  },
+  "resourceType":"GMNotes",
+  "resourceVersion":"2.0",
+}
