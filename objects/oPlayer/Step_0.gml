@@ -3,9 +3,9 @@ right = gamepad_axis_value(0, gp_axislh) > 0 or keyboard_check(vk_right) or keyb
 left = gamepad_axis_value(0, gp_axislh) < 0 or keyboard_check(vk_left) or keyboard_check(ord("A"));
 jump_held = gamepad_button_check(0, gp_face1) or keyboard_check(vk_up) or keyboard_check(ord("W"));
 jump_pressed = gamepad_button_check_pressed(0, gp_face1) or keyboard_check_pressed(vk_up) or keyboard_check_pressed(ord("W"));
-slowmo = keyboard_check(ord("X")) or gamepad_button_check(0, gp_shoulderrb);
-shoot = keyboard_check_pressed(ord("C")) or keyboard_check_pressed(vk_space) or gamepad_button_check_pressed(0, gp_shoulderrb);
-
+slowmo = keyboard_check(ord("Z")) or gamepad_button_check(0, gp_shoulderrb);
+shoot = keyboard_check_pressed(ord("X")) or gamepad_button_check_pressed(0, gp_shoulderrb);
+special_shoot = keyboard_check_pressed(ord("C")) or gamepad_button_check_pressed(0, gp_shoulderr);
 
 hdir = right-left;
 
@@ -82,7 +82,8 @@ if vsp > 0
 jumped = false;
 
 //shooting
-if shoot {
+can_shoot -= 1;
+if shoot and can_shoot <= 0 {
 	
 	var _offset = 0;
 	if image_xscale == -1
@@ -91,7 +92,28 @@ if shoot {
 		direction = other.draw_angle+_offset;
 		image_angle = other.draw_angle+_offset;
 	}
+	
+	can_shoot = fire_rate;
 
+}
+
+if special_shoot and special == "ricoshot" and special_ammo > 0 {
+	
+	var _offset = 0;
+	if image_xscale == -1
+	_offset = 180;
+	with instance_create_depth(x, y, depth+1, oBullet) { 
+		direction = other.draw_angle+_offset;
+		image_angle = other.draw_angle+_offset;
+		
+		bounces = 1;
+	}
+	
+	special_ammo -= 1;
+	can_shoot = fire_rate;
+	 
+	if special_ammo <= 0
+	special = "poopy doopy doesnt matter";
 }
 
 //collision

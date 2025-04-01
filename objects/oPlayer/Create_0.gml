@@ -23,8 +23,14 @@ jump_buffer = 8;
 jumped = false;
 
 //shooting
-spin_spd = 10;
+spin_spd = 15;
 draw_angle = 0;
+
+can_shoot = 0;
+fire_rate = 15;
+
+special = "none";
+special_ammo = 0;
 
 //health-
 hp = 10;
