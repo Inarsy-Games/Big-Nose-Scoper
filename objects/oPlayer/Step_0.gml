@@ -82,7 +82,7 @@ if vsp > 0
 jumped = false;
 
 //shooting
-can_shoot -= 1;
+can_shoot -= 1*game_speed;
 if shoot and can_shoot <= 0 {
 	
 	var _offset = 0;
