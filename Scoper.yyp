@@ -26,6 +26,7 @@
   "resources":[
     {"id":{"name":"oBullet","path":"objects/oBullet/oBullet.yy",},},
     {"id":{"name":"oCamera","path":"objects/oCamera/oCamera.yy",},},
+    {"id":{"name":"oEvilBullet","path":"objects/oEvilBullet/oEvilBullet.yy",},},
     {"id":{"name":"oEvilGuy","path":"objects/oEvilGuy/oEvilGuy.yy",},},
     {"id":{"name":"oGame","path":"objects/oGame/oGame.yy",},},
     {"id":{"name":"oPlayer","path":"objects/oPlayer/oPlayer.yy",},},
@@ -36,6 +37,8 @@
     {"id":{"name":"Script2","path":"scripts/Script2/Script2.yy",},},
     {"id":{"name":"sBullet","path":"sprites/sBullet/sBullet.yy",},},
     {"id":{"name":"sCharge","path":"sprites/sCharge/sCharge.yy",},},
+    {"id":{"name":"sEvilBullet","path":"sprites/sEvilBullet/sEvilBullet.yy",},},
+    {"id":{"name":"sEvilGun","path":"sprites/sEvilGun/sEvilGun.yy",},},
     {"id":{"name":"sEvilGuy","path":"sprites/sEvilGuy/sEvilGuy.yy",},},
     {"id":{"name":"sMenu","path":"sprites/sMenu/sMenu.yy",},},
     {"id":{"name":"sPlayer","path":"sprites/sPlayer/sPlayer.yy",},},
