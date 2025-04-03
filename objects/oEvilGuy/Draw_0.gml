@@ -1,7 +1,13 @@
+//draw self duh
 draw_self();
 
-//gun
+//face player
+if oPlayer.x < x
+image_xscale = -1;
+else
+image_xscale = 1;
 
+//gun
 var _yscale = 1;
 if oPlayer.x < x
 _yscale = -1; 
