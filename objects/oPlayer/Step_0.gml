@@ -1,10 +1,10 @@
 //inputs
 right = gamepad_axis_value(0, gp_axislh) > 0 or keyboard_check(vk_right) or keyboard_check(ord("D"));
 left = gamepad_axis_value(0, gp_axislh) < 0 or keyboard_check(vk_left) or keyboard_check(ord("A"));
-jump_held = gamepad_button_check(0, gp_face1) or keyboard_check(vk_up) or keyboard_check(ord("W"));
-jump_pressed = gamepad_button_check_pressed(0, gp_face1) or keyboard_check_pressed(vk_up) or keyboard_check_pressed(ord("W"));
-slowmo = keyboard_check(ord("Z")) or gamepad_button_check(0, gp_shoulderrb);
-shoot = keyboard_check_pressed(ord("X")) or gamepad_button_check_pressed(0, gp_shoulderrb);
+jump_held = gamepad_button_check(0, gp_face1) or keyboard_check(vk_up) or keyboard_check(vk_space);
+jump_pressed = gamepad_button_check_pressed(0, gp_face1) or keyboard_check_pressed(vk_up) or keyboard_check_pressed(vk_space);
+slowmo = keyboard_check(ord("Z")) or gamepad_button_check(0, gp_shoulderrb) or mouse_check_button(mb_right);
+shoot = keyboard_check_pressed(ord("X")) or gamepad_button_check_pressed(0, gp_shoulderrb) or mouse_check_button_pressed(mb_left);
 special_shoot = keyboard_check_pressed(ord("C")) or gamepad_button_check_pressed(0, gp_shoulderr);
 
 hdir = right-left;
@@ -13,10 +13,14 @@ if hdir != 0
 spin_dir = hdir;
 
 //slowmo stuff
-if slowmo
-game_speed = 0.1;
-else
-game_speed = 1;
+if slowmo {
+	spin_spd = slowmo_spin_spd;
+	game_speed = 0.1;
+}
+else {
+	spin_spd = normal_spin_spd;
+	game_speed = 1;
+}
 
 //move
 hsp = approach(hsp, hdir*walk_spd, acc*game_speed);
@@ -72,6 +76,7 @@ else if walled > 0 and jump > 0 and grounded <= 0 {
 	
 	hsp = jump_force*_jumpdir;
 	walled = 0;
+	grounded = 0;
 	jump = 0;
 }
 

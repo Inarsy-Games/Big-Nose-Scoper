@@ -23,7 +23,10 @@ jump_buffer = 8;
 jumped = false;
 
 //shooting
-spin_spd = 15;
+slowmo_spin_spd = 7; //this is still effected by game_speed, its just so you can be more precise
+normal_spin_spd = 8.5;
+spin_spd = normal_spin_spd;
+
 draw_angle = 0;
 
 can_shoot = 0;

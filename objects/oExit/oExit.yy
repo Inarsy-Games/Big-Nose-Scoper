@@ -1,12 +1,12 @@
 {
   "$GMObject":"",
-  "%Name":"oEvilBullet",
+  "%Name":"oExit",
   "eventList":[
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":{"name":"oPlayer","path":"objects/oPlayer/oPlayer.yy",},"eventNum":0,"eventType":4,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"oEvilBullet",
+  "name":"oExit",
   "overriddenProperties":[],
   "parent":{
     "name":"Objects",
@@ -26,15 +26,13 @@
   "physicsShape":1,
   "physicsShapePoints":[],
   "physicsStartAwake":true,
-  "properties":[
-    {"$GMObjectProperty":"v1","%Name":"shot_speed","filters":[],"listItems":[],"multiselect":false,"name":"shot_speed","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"0","varType":0,},
-  ],
+  "properties":[],
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"sEvilBullet",
-    "path":"sprites/sEvilBullet/sEvilBullet.yy",
+    "name":"sExit",
+    "path":"sprites/sExit/sExit.yy",
   },
   "spriteMaskId":null,
   "visible":true,
