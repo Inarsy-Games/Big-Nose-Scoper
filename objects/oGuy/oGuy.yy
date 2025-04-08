@@ -1,11 +1,9 @@
 {
   "$GMObject":"",
-  "%Name":"oMenu",
-  "eventList":[
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":8,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-  ],
+  "%Name":"oGuy",
+  "eventList":[],
   "managed":true,
-  "name":"oMenu",
+  "name":"oGuy",
   "overriddenProperties":[],
   "parent":{
     "name":"menu",
@@ -29,7 +27,10 @@
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
   "solid":false,
-  "spriteId":null,
+  "spriteId":{
+    "name":"sGuy",
+    "path":"sprites/sGuy/sGuy.yy",
+  },
   "spriteMaskId":null,
   "visible":true,
 }
