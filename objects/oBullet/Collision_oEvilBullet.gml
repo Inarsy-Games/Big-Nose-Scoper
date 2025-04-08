@@ -1,5 +1,9 @@
-/*
-instance_destroy(id);
-instance_destroy(other);
 
-//got rid of this because it was just annoying
+instance_destroy(id);
+
+with other {
+	
+	var _range = 30;
+	direction += choose(-_range, _range);
+	
+}
