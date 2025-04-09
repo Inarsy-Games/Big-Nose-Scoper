@@ -1,5 +1,5 @@
 
-instance_destroy(id);
+//instance_destroy(id);
 
 with other {
 	

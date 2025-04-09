@@ -35,6 +35,9 @@ fire_rate = 15;
 special = "none";
 special_ammo = 0;
 
+//shotflash
+shotFlash = 0;
+
 //health-
 hp = 10;
 hit_flash = 0;
