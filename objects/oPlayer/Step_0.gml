@@ -99,6 +99,12 @@ if shoot and can_shoot <= 0 {
 	}
 	
 	can_shoot = fire_rate;
+	
+	//set shot flash duration
+	if game_speed == 1
+	shot_flash = sprite_get_number(sShotFlashFast);
+	else
+	shot_flash = sprite_get_number(sShotFlashSlow);
 
 }
 

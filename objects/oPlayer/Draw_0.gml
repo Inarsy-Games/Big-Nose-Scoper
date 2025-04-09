@@ -41,3 +41,17 @@ draw_sprite_ext(sprite_index, image_index, x, y, image_xscale, image_yscale, dra
 //sniper
 draw_sprite_ext(sSniper, image_index, x, y, image_xscale, image_yscale, draw_angle, image_blend, image_alpha); 
 
+//shot flash
+if shot_flash >= 0 {
+	
+	var _angle = draw_angle;
+	if image_xscale == -1
+	_angle += 180;
+	
+	var _sprite = sShotFlashSlow;
+	if game_speed == 1
+	_sprite = sShotFlashFast;
+	
+	draw_sprite_ext(_sprite, shot_flash, x+lengthdir_x(sprite_get_width(sSniper)/2, _angle), y+lengthdir_y(sprite_get_width(sSniper)/2, _angle), 1, 1, _angle, c_white, 1);	
+	shot_flash -= shot_flash_spd*game_speed;
+}

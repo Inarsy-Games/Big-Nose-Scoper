@@ -36,7 +36,8 @@ special = "none";
 special_ammo = 0;
 
 //shotflash
-shotFlash = 0;
+shot_flash = 0;
+shot_flash_spd = 0.5;
 
 //health-
 hp = 10;
