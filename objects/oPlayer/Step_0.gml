@@ -90,12 +90,12 @@ jumped = false;
 can_shoot -= 1*game_speed;
 if shoot and can_shoot <= 0 {
 	
-	var _offset = 0;
+	var _angle = draw_angle;
 	if image_xscale == -1
-	_offset = 180;
-	with instance_create_depth(x, y, depth+1, oBullet) { 
-		direction = other.draw_angle+_offset;
-		image_angle = other.draw_angle+_offset;
+	_angle += 180;
+	with instance_create_depth(x+lengthdir_x(sprite_get_width(sSniper)/2, _angle), y+lengthdir_y(sprite_get_width(sSniper)/2, _angle), depth+1, oBullet) { 
+		direction = _angle;
+		image_angle = _angle;
 	}
 	
 	can_shoot = fire_rate;
