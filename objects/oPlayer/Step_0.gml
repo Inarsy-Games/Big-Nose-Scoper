@@ -3,7 +3,7 @@ right = gamepad_axis_value(0, gp_axislh) > 0 or keyboard_check(vk_right) or keyb
 left = gamepad_axis_value(0, gp_axislh) < 0 or keyboard_check(vk_left) or keyboard_check(ord("A"));
 jump_held = gamepad_button_check(0, gp_face1) or keyboard_check(vk_up) or keyboard_check(vk_space);
 jump_pressed = gamepad_button_check_pressed(0, gp_face1) or keyboard_check_pressed(vk_up) or keyboard_check_pressed(vk_space);
-slowmo = keyboard_check(ord("Z")) or gamepad_button_check(0, gp_shoulderlb) or mouse_check_button(mb_right);
+slowmo_held = keyboard_check(ord("Z")) or gamepad_button_check(0, gp_shoulderlb) or mouse_check_button(mb_right);
 shoot = keyboard_check_pressed(ord("X")) or gamepad_button_check_pressed(0, gp_shoulderrb) or mouse_check_button_pressed(mb_left);
 special_shoot = keyboard_check_pressed(ord("C")) or gamepad_button_check_pressed(0, gp_shoulderr);
 
@@ -13,11 +13,17 @@ if hdir != 0
 spin_dir = hdir;
 
 //slowmo stuff
-if slowmo {
+if slowmo_held and slowmo > 0 {
+	
+	slowmo = approach(slowmo, 0, slowmo_usage);
+	
 	spin_spd = slowmo_spin_spd;
 	game_speed = 0.1;
 }
 else {
+	
+	slowmo = approach(slowmo, max_slowmo, slowmo_rate);
+	
 	spin_spd = normal_spin_spd;
 	game_speed = 1;
 }

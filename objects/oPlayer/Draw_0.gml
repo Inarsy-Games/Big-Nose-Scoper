@@ -38,6 +38,10 @@ if special == "ricoshot" {
 //player
 draw_sprite_ext(sprite_index, image_index, x, y, image_xscale, image_yscale, draw_angle, image_blend, image_alpha);
 
+//slowmo bar
+if slowmo < max_slowmo
+draw_sprite_ext(sSlowmoBar, 0, x, bbox_top-1, slowmo/8, 1, 0, c_white, 1);
+
 //sniper
 draw_sprite_ext(sSniper, image_index, x, y, image_xscale, image_yscale, draw_angle, image_blend, image_alpha); 
 

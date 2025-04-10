@@ -39,6 +39,12 @@ special_ammo = 0;
 shot_flash = 0;
 shot_flash_spd = 0.5;
 
+//slowmo
+max_slowmo = 100;
+slowmo = max_slowmo;
+slowmo_usage = 0.25;
+slowmo_rate = 0.5;
+
 //health-
 hp = 10;
 hit_flash = 0;
